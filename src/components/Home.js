@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import React,{useEffect} from "react";
+import { useRecoilState } from "recoil";
 import { taskListAtom } from "./data";
 import { newTaskAtom } from "./data";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +11,10 @@ function Home() {
     const [newTask, setNewTask] = useRecoilState(newTaskAtom);
     const [taskList, setTaskList] = useRecoilState(taskListAtom);
 
-
+    useEffect(()=> {
+        const storedTaskList = JSON.parse(localStorage.getItem('taskList')) || [];
+        setTaskList(storedTaskList);
+    }, []);
     const navigate=useNavigate();
 
     const handleAddTask = () => {
@@ -19,7 +22,8 @@ function Home() {
             setTaskList([...taskList, newTask]);
             setNewTask('')
         }
-        
+
+        localStorage.setItem('taskList', JSON.stringify([...taskList, newTask]));
     }
 
     function handleCheckTasks(){
