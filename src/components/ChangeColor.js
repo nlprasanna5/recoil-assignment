@@ -6,7 +6,7 @@ import style from './ChangeColor.module.css';
 function ColorPicker() {
   const [color, setColor] = useRecoilState(colorState);
 
-  const handleClick = (event) => {
+  const handleClick = () => {
     if(color==="blue"){
       setColor("red")
     } else {
