@@ -1,6 +1,11 @@
 import { atom } from 'recoil';
 
-export const colorState = atom({
-  key: 'colorState',
-  default: 'blue',
+export const taskListAtom = atom({
+  key: 'taskListAtom',
+  default: [],
 });
+
+export const newTaskAtom = atom ({
+    key: 'newTaskAtom',
+    default: '',
+})

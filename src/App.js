@@ -1,12 +1,20 @@
 import React from "react";
-// import "./style.css";
-import ColorPicker from "./components/ChangeColor";
+import { Routes, Route } from "react-router-dom";
+import { RecoilRoot } from "recoil";
+import Home from "./components/Home";
+import Tasks from "./components/Tasks";
 
 
 export default function App() {
   return (
     <div>
-      <ColorPicker/>
+     <RecoilRoot>
+      <Routes>
+        <Route path='/' element={<Home/>}></Route>
+        <Route path='/tasks' element={<Tasks/>}></Route>
+
+      </Routes>
+     </RecoilRoot>
     </div>
   );
 }
